@@ -1,14 +1,17 @@
 import 'react-native-gesture-handler';
 
+import React from 'react';
 import * as eva from '@eva-design/eva';
+import { useColorScheme } from 'react-native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { NavigationContainer } from '@react-navigation/native';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 
-import React from 'react';
-import { useColorScheme } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { StackNavigator } from './presentation/navigation/StackNavigator';
 import { AuthProvider } from './presentation/provider/AuthProvider';
+import { StackNavigator } from './presentation/navigation/StackNavigator';
+
+const queryClient = new QueryClient();
 
 export const App = () => {
   const colorScheme = useColorScheme();
@@ -19,7 +22,7 @@ export const App = () => {
       : theme['color-basic-100'];
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={theme}>
         <NavigationContainer
@@ -57,6 +60,6 @@ export const App = () => {
           </AuthProvider>
         </NavigationContainer>
       </ApplicationProvider>
-    </>
+    </QueryClientProvider>
   );
 };

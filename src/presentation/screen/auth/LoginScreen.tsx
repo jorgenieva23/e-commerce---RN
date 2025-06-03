@@ -56,6 +56,7 @@ export const LoginScreen = ({ navigation }: Props) => {
             onChangeText={email => setForm({ ...form, email })}
             accessoryLeft={<MyIcon name="email-outline" />}
             style={{ marginBottom: 10 }}
+            maxLength={30}
           />
           <Input
             placeholder="Contraseña"
@@ -65,6 +66,7 @@ export const LoginScreen = ({ navigation }: Props) => {
             accessoryLeft={<MyIcon name="lock-outline" />}
             secureTextEntry
             style={{ marginBottom: 10 }}
+            maxLength={30}
           />
         </Layout>
 
@@ -73,7 +75,7 @@ export const LoginScreen = ({ navigation }: Props) => {
         <Layout>
           <Button
             disabled={isPosting}
-            accessoryRight={<MyIcon name="arrow-forward-outline" white />}
+            accessoryRight={<MyIcon name="arrow-forward-outline" color='' />}
             onPress={onLogin}>
             Ingresar
           </Button>
