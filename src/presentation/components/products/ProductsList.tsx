@@ -1,7 +1,8 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import { List } from '@ui-kitten/components';
-import { Product } from '../../../../domain/entities/product';
+import { Layout, List } from '@ui-kitten/components';
+import { Product } from '../../../domain/entities/product';
+import { ProductCard } from './ProductCard';
 
 interface Props {
   products: Product[];
@@ -13,7 +14,8 @@ export const ProductsList = ({ products }: Props) => {
       data={products}
       numColumns={2}
       keyExtractor={(item, index) => `${item.id}-${index}`}
-      renderItem={({ item }) => <Text key={item.id}>{item.title}</Text>}
+      renderItem={({ item }) => <ProductCard product={item} />}
+      ListFooterComponent={() => <Layout style={{ height: 150 }} />}
     />
   );
 };

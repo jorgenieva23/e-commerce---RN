@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button, Icon, Layout, Text } from '@ui-kitten/components';
-import { useAuthStore } from '../../store/auth/useAuthStore';
 import { getProductsByPage } from '../../../actions/products/get-products-by-page';
 import { useQuery } from '@tanstack/react-query';
 import { MainLayout } from '../../layouts/MainLayout';
 import { FullScreenLouder } from '../../components/ui/FullScreenLouder';
-import { ProductsList } from '../../components/ui/products/ProductsList';
+import { ProductsList } from '../../components/products/ProductsList';
 
 export const HomeScreen = () => {
   const { isLoading, data: products = [] } = useQuery({
