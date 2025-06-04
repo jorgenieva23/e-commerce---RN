@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native';
 import React from 'react';
 import { Layout, List } from '@ui-kitten/components';
 import { Product } from '../../../domain/entities/product';

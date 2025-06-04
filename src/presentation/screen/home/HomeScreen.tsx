@@ -19,7 +19,6 @@ export const HomeScreen = () => {
       title="TesloShop - Products"
       subTitle="Aplicacion administrativa">
       {isLoading ? <FullScreenLouder /> : <ProductsList products={products} />}
-      <FullScreenLouder />
       <Icon name="plus-outline" fill="#000" style={{ width: 24, height: 24 }} />
     </MainLayout>
   );
