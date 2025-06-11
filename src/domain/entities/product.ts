@@ -19,10 +19,10 @@ export enum Gender {
 }
 
 export enum Size {
+  Xs = 'XS',
   S = 'S',
   M = 'M',
   L = 'L',
   Xl = 'XL',
-  Xs = 'XS',
   Xxl = 'XXL',
 }
