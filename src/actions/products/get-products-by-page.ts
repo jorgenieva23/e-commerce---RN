@@ -2,7 +2,7 @@ import { tesloApi } from '../../configs/api/telsloApi';
 import type { TesloProduct } from '../../infrastructure/interface/teslo-products-response';
 import { ProductMapper } from '../../infrastructure/mappers/product-mappers';
 
-export const getProductsByPage = async (page: number, limit: number = 20) => {
+export const getProductsByPage = async (page: number, limit: number = 10) => {
   console.log(page, limit);
 
   try {
