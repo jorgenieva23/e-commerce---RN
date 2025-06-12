@@ -20,7 +20,7 @@ const tesloApi = axios.create({
 tesloApi.interceptors.request.use(async config => {
   const token = await StorageAdapter.getItem('token');
   if (token) {
-    config.headers['Authorization'] = `bearer${token}`;
+    config.headers['Authorization'] = `Bearer ${token}`;
   }
   return config;
 });
