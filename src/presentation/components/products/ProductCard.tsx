@@ -4,6 +4,7 @@ import { Product } from '../../../domain/entities/product';
 import { Card, Text } from '@ui-kitten/components';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../../navigation/StackNavigator';
+import { FadeInImage } from '../ui/FadeInImage';
 
 interface Props {
   product: Product;
@@ -23,18 +24,33 @@ export const ProductCard = ({ product }: Props) => {
         margin: 3,
       }}>
       {product.images.length === 0 ? (
-        <Text>sin imagen</Text>
+        <Image
+          source={require('../../../assets/no-product-image.png')}
+          style={{ width: 200, height: 200 }}
+        />
       ) : (
-        <Text>{product.id}</Text>
-        // <Image
-        //   source={{ uri: product.images[0] }}
-        //   style={{ width: 100, height: 100 }}
-        // />
+        <FadeInImage
+          uri={product.images[0]}
+          style={{ flex: 1, height: 200, width: 200 }}
+        />
       )}
-      <Text numberOfLines={2} style={{ textAlign: 'center' }}>
+      <Text numberOfLines={2} category="s1" style={{ textAlign: 'left' }}>
         {product.title}
+      </Text>
+      <Text
+        numberOfLines={1}
+        appearance="hint"
+        category="s1"
+        style={{ textAlign: 'left' }}>
+        {product.price.toString()}
+      </Text>
+      <Text
+        numberOfLines={1}
+        category="p1"
+        status="success"
+        style={{ textAlign: 'left' }}>
+        Envio gratis!
       </Text>
     </Card>
   );
 };
-// GIT_AUTHOR_DATE="2024-06-03T10:00:00"GIT_COMMITTER_DATE"2024-06-03T10:00:00"git commit -m "descripcion"
