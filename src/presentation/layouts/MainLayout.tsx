@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Text,
   Divider,
   Layout,
   TopNavigation,
@@ -8,6 +9,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { MyIcon } from '../components/ui/MyIcon';
+import { View } from 'react-native';
 
 interface Props {
   title: string;
@@ -49,7 +51,17 @@ export const MainLayout = ({
   return (
     <Layout style={{}}>
       <TopNavigation
-        title={title}
+        title={() => (
+          <View style={{ paddingHorizontal: 35 }}>
+            <Text
+              category="h6"
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              style={{ textAlign: 'center' }}>
+              {title}
+            </Text>
+          </View>
+        )}
         subtitle={subTitle}
         alignment="center"
         accessoryLeft={canGoBack() ? renderBackAction : undefined}
