@@ -60,4 +60,3 @@ export const App = () => {
     </>
   );
 };
-// Viste cuando Insta te sugiere gente y uno le da follow sin conocerse? Bueno, acá estamos 😂 Todo bien?
