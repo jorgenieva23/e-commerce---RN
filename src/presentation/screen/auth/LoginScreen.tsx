@@ -12,7 +12,6 @@ import { useAuthStore } from '../../store/auth/useAuthStore';
 interface Props extends StackScreenProps<RootStackParams, 'LoginScreen'> {}
 
 export const LoginScreen = ({ navigation }: Props) => {
-  const { height } = useWindowDimensions();
   const { login } = useAuthStore();
 
   const [isPosting, setIsPosting] = useState(false);
@@ -50,7 +49,7 @@ export const LoginScreen = ({ navigation }: Props) => {
 
         <Layout style={{ marginTop: 20 }}>
           <Input
-            placeholder="Correo electronico"
+            placeholder="Correo electrónico"
             keyboardType="email-address"
             autoCapitalize="none"
             value={form.email}
@@ -68,7 +67,6 @@ export const LoginScreen = ({ navigation }: Props) => {
             style={{ marginBottom: 10 }}
           />
         </Layout>
-        <Text>{JSON.stringify(form, null, 2)}</Text>
 
         <Layout style={{ height: 10 }} />
 

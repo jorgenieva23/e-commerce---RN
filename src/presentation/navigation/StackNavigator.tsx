@@ -12,7 +12,7 @@ import { LoginScreen } from '../screen/auth/LoginScreen';
 import { useColorScheme } from 'react-native';
 
 export type RootStackParams = {
-  Loading: undefined;
+  LoadingScreen: undefined;
   LoginScreen: undefined;
   RegisterScreen: undefined;
   HomeScreen: undefined;
@@ -39,13 +39,13 @@ export const StackNavigator = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName="LoginScreen"
+      initialRouteName="LoadingScreen"
       screenOptions={{
         headerShown: false,
         cardStyle: { backgroundColor },
       }}>
       <Stack.Screen
-        name="Loading"
+        name="LoadingScreen"
         options={{ cardStyleInterpolator: fadeAnimation }}
         component={LoadingScreen}
       />
@@ -64,10 +64,7 @@ export const StackNavigator = () => {
         options={{ cardStyleInterpolator: fadeAnimation }}
         component={HomeScreen}
       />
-      <Stack.Screen
-        name="ProductScreen"
-        component={ProductScreen}
-      />
+      <Stack.Screen name="ProductScreen" component={ProductScreen} />
     </Stack.Navigator>
   );
 };

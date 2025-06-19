@@ -8,6 +8,7 @@ import React from 'react';
 import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { StackNavigator } from './presentation/navigation/StackNavigator';
+import { AuthProvider } from './presentation/provider/AuthProvider';
 
 export const App = () => {
   const colorScheme = useColorScheme();
@@ -51,7 +52,9 @@ export const App = () => {
               },
             },
           }}>
-          <StackNavigator />
+          <AuthProvider>
+            <StackNavigator />
+          </AuthProvider>
         </NavigationContainer>
       </ApplicationProvider>
     </>
