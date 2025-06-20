@@ -1,0 +1,38 @@
+import { create } from 'zustand';
+import { AuthStatus } from '../../../infrastructure/interface/auth.status';
+import { authLogin } from '../../../actions/auth/auth';
+import { User } from '../../../domain/entities/user';
+import { StorageAdapter } from '../../../configs/adapters/storage-adapter';
+import { tesloApi } from '../../../configs/api/telsloApi';
+import { AuthResponse } from '../../../infrastructure/interface/auth.response';
+
+export interface AuthState {
+  status: AuthStatus;
+  token?: string;
+  user?: User;
+
+  login: (email: string, password: string) => Promise<boolean>;
+}
+
+export const useAuthStore = create<AuthState>()((set, get) => ({
+  status: 'checking',
+  token: undefined,
+  user: undefined,
+
+  login: async (email: string, password: string) => {
+    const resp = await authLogin(email, password);
+
+    if (!resp) {
+      set({
+        status: 'unauthenticated',
+        token: undefined,
+        user: undefined,
+      });
+      return false;
+    }
+    await StorageAdapter.setItem('token', resp.token);
+
+    set({ status: 'authenticated', token: resp.token, user: resp.user });
+    return true;
+  },
+}));

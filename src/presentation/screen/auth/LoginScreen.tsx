@@ -1,23 +1,39 @@
 import React, { useState } from 'react';
+import { Alert, useWindowDimensions } from 'react-native';
 import { Button, Input, Layout, Text } from '@ui-kitten/components';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useWindowDimensions } from 'react-native';
-import { MyIcon } from '../../components/ui/MyIcon';
-import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
-import { RootStackParams } from '../../navigation/StackNavigator';
+import { StackScreenProps } from '@react-navigation/stack';
+
 import { API_URL } from '@env';
+import { MyIcon } from '../../components/ui/MyIcon';
+import { RootStackParams } from '../../navigation/StackNavigator';
+import { useAuthStore } from '../../store/auth/useAuthStore';
 
 interface Props extends StackScreenProps<RootStackParams, 'LoginScreen'> {}
 
 export const LoginScreen = ({ navigation }: Props) => {
   const { height } = useWindowDimensions();
+  const { login } = useAuthStore();
 
+  const [isPosting, setIsPosting] = useState(false);
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
 
-  console.log({ apiUrl: API_URL });
+  const onLogin = async () => {
+    if (form.email.length === 0 || form.password.length === 0) {
+      return;
+    }
+    setIsPosting(false);
+
+    const wasSuccessful = await login(form.email, form.password);
+    setIsPosting(true);
+
+    if (wasSuccessful) return;
+
+    Alert.alert('Error', 'Usuario o contraseña incorrectos');
+  };
 
   return (
     <Layout style={{ flex: 1 }}>
@@ -37,24 +53,30 @@ export const LoginScreen = ({ navigation }: Props) => {
             placeholder="Correo electronico"
             keyboardType="email-address"
             autoCapitalize="none"
+            value={form.email}
+            onChangeText={email => setForm({ ...form, email })}
             accessoryLeft={<MyIcon name="email-outline" />}
             style={{ marginBottom: 10 }}
           />
           <Input
             placeholder="Contraseña"
             autoCapitalize="none"
+            value={form.password}
+            onChangeText={password => setForm({ ...form, password })}
             accessoryLeft={<MyIcon name="lock-outline" />}
             secureTextEntry
             style={{ marginBottom: 10 }}
           />
         </Layout>
+        <Text>{JSON.stringify(form, null, 2)}</Text>
 
         <Layout style={{ height: 10 }} />
 
         <Layout>
           <Button
+            disabled={isPosting}
             accessoryRight={<MyIcon name="arrow-forward-outline" white />}
-            onPress={() => {}}>
+            onPress={onLogin}>
             Ingresar
           </Button>
         </Layout>
