@@ -5,6 +5,7 @@ import { useWindowDimensions } from 'react-native';
 import { MyIcon } from '../../components/ui/MyIcon';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { RootStackParams } from '../../navigation/StackNavigator';
+import { API_URL } from '@env';
 
 interface Props extends StackScreenProps<RootStackParams, 'LoginScreen'> {}
 
@@ -15,6 +16,8 @@ export const LoginScreen = ({ navigation }: Props) => {
     email: '',
     password: '',
   });
+
+  console.log({ apiUrl: API_URL });
 
   return (
     <Layout style={{ flex: 1 }}>
