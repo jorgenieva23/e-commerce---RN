@@ -64,7 +64,10 @@ export const StackNavigator = () => {
         options={{ cardStyleInterpolator: fadeAnimation }}
         component={HomeScreen}
       />
-      <Stack.Screen name="ProductScreen" component={ProductScreen} />
+      <Stack.Screen
+        name="ProductScreen"
+        component={ProductScreen}
+      />
     </Stack.Navigator>
   );
 };
