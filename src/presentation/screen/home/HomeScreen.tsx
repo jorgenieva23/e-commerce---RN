@@ -11,7 +11,7 @@ export const HomeScreen = () => {
       <Button
         accessoryLeft={<Icon name="facebook" />}
         style={{ marginTop: 20 }}>
-        Cerrar sesion
+        Cerrar sesión
       </Button>
     </Layout>
   );
