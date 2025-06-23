@@ -12,12 +12,12 @@ export const MyIcon = ({ name, color, white = false }: Props) => {
   const theme = useTheme();
 
   if (white) {
-  color = theme['text-control-color']; // O '#FFFFFF'
-} else if (!color) {
-  color = theme['text-control-color']; // Se adapta mejor
-} else {
-  color = theme[color] ?? theme['text-control-color'];
-}
+    color = theme['text-control-color'];
+  } else if (!color) {
+    color = theme['text-control-color'];
+  } else {
+    color = theme[color] ?? theme['text-control-color'];
+  }
 
   return <Icon style={styles.icon} fill={color} name={name} />;
 };

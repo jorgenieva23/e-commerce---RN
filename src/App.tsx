@@ -22,7 +22,35 @@ export const App = () => {
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={theme}>
         <NavigationContainer
-          theme={{ colors: { background: backgroundColor } }}>
+          theme={{
+            dark: colorScheme === 'dark',
+            colors: {
+              primary: theme['color-primary-500'],
+              background: backgroundColor,
+              card: theme['color-basic-100'],
+              text: theme['text-basic-color'],
+              border: theme['color-basic-800'],
+              notification: theme['color-primary-500'],
+            },
+            fonts: {
+              regular: {
+                fontFamily: '',
+                fontWeight: 'bold',
+              },
+              medium: {
+                fontFamily: '',
+                fontWeight: 'bold',
+              },
+              bold: {
+                fontFamily: '',
+                fontWeight: 'bold',
+              },
+              heavy: {
+                fontFamily: '',
+                fontWeight: 'bold',
+              },
+            },
+          }}>
           <StackNavigator />
         </NavigationContainer>
       </ApplicationProvider>
