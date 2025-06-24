@@ -24,13 +24,10 @@ export const LoginScreen = ({ navigation }: Props) => {
     if (form.email.length === 0 || form.password.length === 0) {
       return;
     }
-    setIsPosting(false);
-
-    const wasSuccessful = await login(form.email, form.password);
     setIsPosting(true);
-
+    const wasSuccessful = await login(form.email, form.password);
+    setIsPosting(false);
     if (wasSuccessful) return;
-
     Alert.alert('Error', 'Usuario o contraseña incorrectos');
   };
 
@@ -75,7 +72,7 @@ export const LoginScreen = ({ navigation }: Props) => {
         <Layout>
           <Button
             disabled={isPosting}
-            accessoryRight={<MyIcon name="arrow-forward-outline" color='' />}
+            accessoryRight={<MyIcon name="arrow-forward-outline" color="white" />}
             onPress={onLogin}>
             Ingresar
           </Button>
