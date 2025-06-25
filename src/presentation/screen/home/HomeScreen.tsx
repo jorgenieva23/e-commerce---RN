@@ -9,20 +9,19 @@ import { ProductsList } from '../../components/products/ProductsList';
 export const HomeScreen = () => {
   const { isLoading, data, fetchNextPage } = useInfiniteQuery({
     queryKey: ['products', 'infinite'],
-    staleTime: 1000 * 60 * 60,
+    staleTime: 1000 * 60 * 60, // 1 hour
     initialPageParam: 0,
 
-    queryFn: async params => {
-      return await getProductsByPage(params.pageParam);
-    },
-    getNextPageParam: (lastPage, allPage) => allPage.length,
+    queryFn: async params => await getProductsByPage(params.pageParam),
+    getNextPageParam: (lastPage, allPages) => allPages.length,
   });
 
-  getProductsByPage(0);
   return (
     <MainLayout
       title="TesloShop - Products"
-      subTitle="Aplicacion administrativa">
+      subTitle="Aplicación administrativa"
+      rightAction={() => {}}
+      rightActionIcon="shopping-cart-outline">
       {isLoading ? (
         <FullScreenLouder />
       ) : (
@@ -31,7 +30,6 @@ export const HomeScreen = () => {
           fetchNextPage={fetchNextPage}
         />
       )}
-      <Icon name="plus-outline" fill="#000" style={{ width: 24, height: 24 }} />
     </MainLayout>
   );
 };
