@@ -95,7 +95,29 @@ export const ProductScreen = ({ route }: Props) => {
             </Layout>
 
             {/* Precio e inventario */}
-            
+            <Layout
+              style={{
+                marginVertical: 5,
+                marginHorizontal: 15,
+                flexDirection: 'row',
+                gap: 10,
+              }}>
+              <Input
+                label="Precio"
+                value={values.price.toString()}
+                onChangeText={handleChange('price')}
+                style={{ flex: 1 }}
+                keyboardType="numeric"
+              />
+
+              <Input
+                label="Inventario"
+                value={values.stock.toString()}
+                onChangeText={handleChange('stock')}
+                style={{ flex: 1 }}
+                keyboardType="numeric"
+              />
+            </Layout>
 
             {/* Selectores */}
             <ButtonGroup
