@@ -60,7 +60,6 @@ export const ProductScreen = ({ route }: Props) => {
           }}
           rightActionIcon="image-outline">
           <ScrollView style={{ flex: 1 }}>
-            {/* Imágenes de el producto */}
             <Layout
               style={{
                 marginVertical: 10,
@@ -94,7 +93,6 @@ export const ProductScreen = ({ route }: Props) => {
               />
             </Layout>
 
-            {/* Precio e inventario */}
             <Layout
               style={{
                 marginVertical: 5,
@@ -119,7 +117,6 @@ export const ProductScreen = ({ route }: Props) => {
               />
             </Layout>
 
-            {/* Selectores */}
             <ButtonGroup
               style={{ margin: 2, marginTop: 20, marginHorizontal: 15 }}
               size="small"
