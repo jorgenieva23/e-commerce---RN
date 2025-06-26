@@ -69,7 +69,6 @@ export const ProductScreen = ({ route }: Props) => {
               <ProductImages images={values.images} />
             </Layout>
 
-            {/* Formulario */}
             <Layout style={{ marginHorizontal: 10 }}>
               <Input
                 label="Título"
