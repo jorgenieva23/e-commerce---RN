@@ -24,7 +24,7 @@ export const HomeScreen = () => {
   return (
     <>
       <MainLayout
-        title="TesloShop - Products"
+        title="JerjeShop - Products"
         subTitle="Aplicación administrativa"
         rightAction={() => {}}
         rightActionIcon="shopping-cart-outline">
