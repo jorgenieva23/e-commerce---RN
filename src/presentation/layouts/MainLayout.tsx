@@ -49,19 +49,9 @@ export const MainLayout = ({
   };
 
   return (
-    <Layout style={{}}>
+    <Layout>
       <TopNavigation
-        title={() => (
-          <View style={{ paddingHorizontal: 35 }}>
-            <Text
-              category="h6"
-              numberOfLines={1}
-              ellipsizeMode="tail"
-              style={{ textAlign: 'center' }}>
-              {title}
-            </Text>
-          </View>
-        )}
+        title={title}
         subtitle={subTitle}
         alignment="center"
         accessoryLeft={canGoBack() ? renderBackAction : undefined}
